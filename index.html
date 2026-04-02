@@ -88,8 +88,7 @@
     <nav class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
             <div class="flex items-center">
-                <!-- LOGO COM ACESSO SECRETO -->
-                <span class="text-2xl font-black ifood-red cursor-pointer select-none" id="logo-ifood" title="Clique 5 vezes para acesso administrativo">iFood</span>
+                <span class="text-2xl font-black ifood-red cursor-pointer select-none" id="logo-ifood" title="Acesso administrativo">iFood</span>
                 <span class="ml-4 pl-4 border-l border-gray-300 font-bold text-gray-500 uppercase text-[10px] tracking-widest text-wrap md:text-nowrap">Instruções para Pagamento de Campanhas</span>
             </div>
             <button onclick="toggleAuditPanel()" id="audit-btn" class="hidden text-[10px] font-bold text-red-600 border border-red-200 px-4 py-2 rounded hover:bg-red-50 uppercase tracking-widest transition-all">Painel de Auditoria</button>
@@ -107,33 +106,30 @@
                 </div>
 
                 <div class="p-10 space-y-12">
-                    <!-- Riscos Trabalhistas -->
                     <div>
                         <h3 class="text-3xl font-extrabold mb-8 text-gray-800 flex items-center">
                             <span class="w-2 h-10 bg-red-600 mr-5 rounded-full"></span>
                             Riscos Trabalhistas:
                         </h3>
-                        <div class="space-y-6 text-lg text-gray-700 leading-relaxed">
+                        <div class="space-y-6 text-lg text-gray-700 leading-relaxed text-justify">
                             <p><strong>1. Caracterização como Salário:</strong> Se os prêmios forem pagos de forma habitual, eles podem ser caracterizados como salário. Isso significa que esses valores podem ser incorporados ao salário do empregado, gerando reflexos em outras verbas trabalhistas, como férias, 13º salário, FGTS, horas extras, entre outros.</p>
                             <p><strong>2. Ações Trabalhistas:</strong> Empregados podem entrar com ações trabalhistas reivindicando a incorporação dos prêmios ao salário e o pagamento dos reflexos nas demais verbas trabalhistas. Isso pode resultar em passivos trabalhistas significativos para a empresa.</p>
                             <p><strong>3. Fiscalização do Ministério do Trabalho:</strong> O Ministério do Trabalho pode autuar a empresa se entender que os prêmios pagos de forma habitual deveriam ser considerados como salário. Isso pode resultar em multas e outras penalidades.</p>
                         </div>
                     </div>
 
-                    <!-- Riscos Fiscais -->
                     <div>
                         <h3 class="text-3xl font-extrabold mb-8 text-gray-800 flex items-center">
                             <span class="w-2 h-10 bg-red-600 mr-5 rounded-full"></span>
                             Riscos Fiscais:
                         </h3>
-                        <div class="space-y-6 text-lg text-gray-700 leading-relaxed">
+                        <div class="space-y-6 text-lg text-gray-700 leading-relaxed text-justify">
                             <p><strong>1. Contribuições Previdenciárias:</strong> Se os prêmios forem caracterizados como salário, a empresa terá que recolher as contribuições previdenciárias sobre esses valores. Isso pode gerar um passivo fiscal significativo, incluindo multas e juros pelo não recolhimento no prazo correto.</p>
                             <p><strong>2. Imposto de Renda:</strong> Os prêmios pagos aos empregados podem estar sujeitos ao Imposto de Renda Retido na Fonte (IRRF). A falta de retenção e recolhimento pode resultar em autuações fiscais e multas.</p>
                             <p><strong>3. Fiscalização da Receita Federal:</strong> A Receita Federal pode entender que os prêmios pagos de forma habitual deveriam ser tributados como salário, gerando autuações fiscais, multas e juros pelo não recolhimento dos tributos devidos.</p>
                         </div>
                     </div>
 
-                    <!-- Recomendações -->
                     <div class="bg-gray-50 p-10 rounded-xl border border-gray-200 shadow-inner">
                         <h3 class="text-3xl font-extrabold mb-8 text-red-600">Recomendações:</h3>
                         <div class="space-y-10 text-lg text-gray-700 leading-relaxed">
@@ -305,7 +301,7 @@
                 <div class="bg-white p-14 rounded-[3rem] shadow-xl border border-gray-100 flex flex-col justify-center text-center">
                     <div class="text-6xl mb-6">📅</div>
                     <h3 class="text-2xl font-black text-gray-800 mb-6 uppercase tracking-widest">Prazo Padrão</h3>
-                    <p class="text-gray-600 leading-relaxed text-xl">
+                    <p class="text-gray-600 leading-relaxed text-xl text-center">
                         O pagamento será realizado em até <strong class="text-red-600 font-black text-3xl block mt-2">7 dias úteis</strong> após o retorno via ticket da Alli.
                     </p>
                 </div>
@@ -313,7 +309,7 @@
                 <div class="bg-red-600 p-14 rounded-[3rem] shadow-2xl text-white text-center">
                     <div class="text-6xl mb-6">⚠️</div>
                     <h3 class="text-2xl font-black mb-6 uppercase tracking-widest">Corte Mensal</h3>
-                    <p class="text-red-50 leading-relaxed text-xl">
+                    <p class="text-red-50 leading-relaxed text-xl text-center">
                         Solicitações feitas <strong class="text-white font-black text-2xl block my-4 underline decoration-2">após o dia 18</strong> de cada mês, serão pagas somente no <strong class="text-white font-black text-3xl block mt-2">início do mês subsequente</strong>.
                     </p>
                 </div>
@@ -338,7 +334,7 @@
                             </tr>
                         </thead>
                         <tbody id="audit-logs-body" class="bg-white divide-y divide-gray-100 text-gray-700">
-                            <tr><td colspan="4" class="p-10 text-center italic text-gray-300">Sem registos disponíveis.</td></tr>
+                            <tr><td colspan="4" class="p-10 text-center italic text-gray-300">Sem registos disponíveis neste ambiente.</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -349,7 +345,7 @@
     <footer class="py-24 text-center border-t border-gray-100 bg-white">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-4xl font-black ifood-red mb-6 uppercase tracking-tighter">iFood</div>
-            <p class="text-sm text-gray-300 uppercase tracking-[0.8em] font-black">Instruções para Pagamento de Campanhas</p>
+            <p class="text-sm text-gray-300 uppercase tracking-[0.8em] font-black text-center">Instruções para Pagamento de Campanhas</p>
         </div>
     </footer>
 
@@ -358,12 +354,19 @@
         import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // ==========================================
+        // =========================================================================
         // CONFIGURAÇÕES DE ADMINISTRADOR
-        // ==========================================
-        const adminUIDs = []; 
-        const secretPass = "beneficios@2026"; // SENHA CORRETA
-        // ==========================================
+        // =========================================================================
+        const adminEmails = [
+            "erica.harada@ifood.com.br",
+            "priscila.fontanelli@ifood.com.br",
+            "livia.paula@ifood.com.br",
+            "loc.tguimaraes@ifood3rd.com",
+            "loc.bnunes@ifood3rd.com"
+        ]; 
+        
+        const secretPass = "beneficios@2026"; 
+        // =========================================================================
 
         const hasConfig = typeof __firebase_config !== 'undefined';
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'campanha-procurement-saldo-livre';
@@ -372,13 +375,12 @@
         let auth = null;
         let currentUser = null;
 
-        function checkAdmin(uid) {
-            if (adminUIDs.includes(uid)) {
-                document.getElementById('audit-btn').classList.remove('hidden');
-            }
+        function enableAdminMode() {
+            document.getElementById('audit-btn').classList.remove('hidden');
+            document.getElementById('audit-panel').classList.remove('hidden');
+            listenToLogs();
         }
 
-        // Sistema de Acesso por Cliques no Logo
         let clickCount = 0;
         document.getElementById('logo-ifood').addEventListener('click', () => {
             clickCount++;
@@ -386,11 +388,10 @@
                 clickCount = 0;
                 const p = prompt("Digite a senha de administrador:");
                 if (p === secretPass) {
-                    document.getElementById('audit-btn').classList.remove('hidden');
-                    document.getElementById('audit-panel').classList.remove('hidden');
+                    enableAdminMode();
                     alert("Acesso Administrativo concedido.");
                     document.getElementById('audit-panel').scrollIntoView({behavior: 'smooth'});
-                } else {
+                } else if (p !== null) {
                     alert("Senha incorreta.");
                 }
             }
@@ -433,10 +434,6 @@
 
             onAuthStateChanged(auth, (user) => {
                 currentUser = user;
-                if (user) {
-                    checkAdmin(user.uid);
-                    listenToLogs();
-                }
             });
 
             initAuth();
@@ -446,7 +443,6 @@
             const btn = document.getElementById('unlock-btn');
             const status = document.getElementById('save-status');
             
-            // Solicitar e-mail ou nome para identificação real no log
             const userIdentifier = prompt("Para prosseguir, informe seu E-MAIL corporativo ou NOME COMPLETO:");
             
             if (!userIdentifier || userIdentifier.trim().length < 3) {
@@ -454,22 +450,26 @@
                 return;
             }
 
+            const cleanId = userIdentifier.trim();
+
             btn.classList.add('loading');
             status.classList.remove('hidden');
 
-            // Salvar no Banco se houver configuração
             if (hasConfig && db && currentUser) {
                 try {
                     await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'acknowledgments'), {
                         userId: currentUser.uid,
-                        userEmail: userIdentifier.trim(), // Salvando o dado de identificação
+                        userEmail: cleanId,
                         acknowledgedAt: serverTimestamp(),
                         status: "Confirmado"
                     });
                 } catch (e) { console.error("Erro no DB:", e); }
             }
 
-            // Desbloqueia de qualquer forma para não travar o usuário
+            if (adminEmails.map(e => e.toLowerCase()).includes(cleanId.toLowerCase())) {
+                enableAdminMode();
+            }
+
             setTimeout(() => {
                 unlockUI();
                 status.innerText = "Ciência registrada com sucesso.";
@@ -478,7 +478,6 @@
 
         function listenToLogs() {
             if (!hasConfig || !db) return;
-            // Listener em tempo real para o painel de auditoria
             onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'acknowledgments'), (snap) => {
                 const logsBody = document.getElementById('audit-logs-body');
                 if (snap.empty) return;
