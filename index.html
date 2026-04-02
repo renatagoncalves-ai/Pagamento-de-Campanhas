@@ -13,7 +13,7 @@
         .step-inactive { opacity: 0.3; pointer-events: none; filter: grayscale(1); transition: all 0.5s ease; }
         .step-active { opacity: 1; pointer-events: auto; filter: grayscale(0); }
         
-        /* Estilização das Telas do Sistema (Baseado no PDF) */
+        /* Estilização das Telas do Sistema */
         .dby-screen {
             background: #ffffff;
             border: 1px solid #e5e7eb;
@@ -43,12 +43,14 @@
             position: absolute;
             background: #ea1d2c;
             color: white;
-            padding: 2px 8px;
+            padding: 4px 10px;
             border-radius: 4px;
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 900;
             z-index: 10;
             animation: bounce 1s infinite;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(234, 29, 44, 0.3);
         }
         
         .field-highlight {
@@ -86,10 +88,10 @@
     <nav class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
             <div class="flex items-center">
-                <span class="text-2xl font-black ifood-red">iFood</span>
+                <span class="text-2xl font-black ifood-red cursor-pointer select-none" id="logo-ifood" title="Clique 5 vezes para acesso adm">iFood</span>
                 <span class="ml-4 pl-4 border-l border-gray-300 font-bold text-gray-500 uppercase text-[10px] tracking-widest">Instruções para Pagamento de Campanhas</span>
             </div>
-            <button onclick="toggleAuditPanel()" class="text-[10px] font-bold text-gray-400 hover:text-gray-600 uppercase tracking-widest">Painel de Auditoria</button>
+            <button onclick="toggleAuditPanel()" id="audit-btn" class="hidden text-[10px] font-bold text-red-600 border border-red-200 px-3 py-1 rounded hover:bg-red-50 uppercase tracking-widest">Painel de Auditoria</button>
         </div>
     </nav>
 
@@ -98,312 +100,373 @@
         <!-- PASSO 1: JURÍDICO -->
         <section id="step-1" class="mb-24">
             <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
-                <div class="bg-red-600 p-8 text-white">
-                    <h2 class="text-xs font-black uppercase tracking-[0.3em] mb-2 opacity-80">Passo 1</h2>
-                    <h1 class="text-3xl font-black leading-tight">Análise Jurídico Trabalhista - Pagamentos em Saldo Livre</h1>
+                <div class="bg-red-600 p-10 text-white">
+                    <h2 class="text-base font-black uppercase tracking-[0.4em] mb-3 opacity-90">Passo 1</h2>
+                    <h1 class="text-4xl font-black leading-tight tracking-tighter">Análise Jurídico Trabalhista - Pagamentos em Saldo Livre</h1>
                 </div>
 
                 <div class="p-10 space-y-12">
-                    <!-- Riscos Trabalhistas -->
                     <div>
-                        <h3 class="text-xl font-extrabold mb-6 text-gray-800 flex items-center">
-                            <span class="w-1.5 h-6 bg-red-600 mr-3 rounded-full"></span>
+                        <h3 class="text-2xl font-extrabold mb-6 text-gray-800 flex items-center">
+                            <span class="w-2 h-8 bg-red-600 mr-4 rounded-full"></span>
                             Riscos Trabalhistas:
                         </h3>
-                        <div class="space-y-6 text-sm text-gray-700 leading-relaxed">
+                        <div class="space-y-6 text-base text-gray-700 leading-relaxed">
                             <p><strong>1. Caracterização como Salário:</strong> Se os prêmios forem pagos de forma habitual, eles podem ser caracterizados como salário. Isso significa que esses valores podem ser incorporados ao salário do empregado, gerando reflexos em outras verbas trabalhistas, como férias, 13º salário, FGTS, horas extras, entre outros.</p>
                             <p><strong>2. Ações Trabalhistas:</strong> Empregados podem entrar com ações trabalhistas reivindicando a incorporação dos prêmios ao salário e o pagamento dos reflexos nas demais verbas trabalhistas. Isso pode resultar em passivos trabalhistas significativos para a empresa.</p>
                             <p><strong>3. Fiscalização do Ministério do Trabalho:</strong> O Ministério do Trabalho pode autuar a empresa se entender que os prêmios pagos de forma habitual deveriam ser considerados como salário. Isso pode resultar em multas e outras penalidades.</p>
                         </div>
                     </div>
 
-                    <!-- Riscos Fiscais -->
                     <div>
-                        <h3 class="text-xl font-extrabold mb-6 text-gray-800 flex items-center">
-                            <span class="w-1.5 h-6 bg-red-600 mr-3 rounded-full"></span>
+                        <h3 class="text-2xl font-extrabold mb-6 text-gray-800 flex items-center">
+                            <span class="w-2 h-8 bg-red-600 mr-4 rounded-full"></span>
                             Riscos Fiscais:
                         </h3>
-                        <div class="space-y-6 text-sm text-gray-700 leading-relaxed">
+                        <div class="space-y-6 text-base text-gray-700 leading-relaxed">
                             <p><strong>1. Contribuições Previdenciárias:</strong> Se os prêmios forem caracterizados como salário, a empresa terá que recolher as contribuições previdenciárias sobre esses valores. Isso pode gerar um passivo fiscal significativo, incluindo multas e juros pelo não recolhimento no prazo correto.</p>
                             <p><strong>2. Imposto de Renda:</strong> Os prêmios pagos aos empregados podem estar sujeitos ao Imposto de Renda Retido na Fonte (IRRF). A falta de retenção e recolhimento pode resultar em autuações fiscais e multas.</p>
                             <p><strong>3. Fiscalização da Receita Federal:</strong> A Receita Federal pode entender que os prêmios pagos de forma habitual deveriam ser tributados como salário, gerando autuações fiscais, multas e juros pelo não recolhimento dos tributos devidos.</p>
                         </div>
                     </div>
 
-                    <!-- Recomendações -->
-                    <div class="bg-gray-50 p-8 rounded-xl border border-gray-200">
-                        <h3 class="text-xl font-extrabold mb-6 text-red-600">Recomendações:</h3>
-                        <div class="space-y-8 text-sm text-gray-700 leading-relaxed">
+                    <div class="bg-gray-50 p-10 rounded-xl border border-gray-200">
+                        <h3 class="text-2xl font-extrabold mb-6 text-red-600">Recomendações:</h3>
+                        <div class="space-y-8 text-base text-gray-700 leading-relaxed">
                             <div>
-                                <p class="font-bold text-gray-900 mb-2">1. Criação de uma Política de Metas:</p>
+                                <p class="font-bold text-gray-900 mb-3 text-lg">1. Criação de uma Política de Metas:</p>
                                 <p><strong>Documento Formal:</strong> Por isto, orientamos que a política de metas seja prevista em algum documento, seja no acordo coletivo ou individual, contrato de trabalho ou regimento interno, considerando todos os seus procedimentos e regras para alcance das metas.</p>
-                                <p class="mt-2 text-red-700 font-semibold">No entanto, é importante enfatizar que os prêmios não devem ser formalizados em documento (somente a política de metas), pois não podem ter caráter ajustado ou compactuado, conforme a Solução de Consulta da Receita Federal do Brasil, COSIT 151 de 14/05/2019.</p>
+                                <p class="mt-4 p-4 bg-white border-l-4 border-red-500 text-red-700 font-semibold shadow-sm">No entanto, é importante enfatizar que os prêmios não devem ser formalizados em documento (somente a política de metas), pois não podem ter caráter ajustado ou compactuado, conforme a Solução de Consulta da Receita Federal do Brasil, COSIT 151 de 14/05/2019.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="p-10 bg-white border-t border-gray-100 flex flex-col items-center">
-                    <button onclick="handleAcknowledge()" id="unlock-btn" class="bg-ifood-red text-white font-black py-5 px-20 rounded-full shadow-2xl transition hover:scale-105 active:scale-95 text-lg uppercase tracking-wider">
+                    <button onclick="handleAcknowledge()" id="unlock-btn" class="bg-ifood-red text-white font-black py-6 px-24 rounded-full shadow-2xl transition hover:scale-105 active:scale-95 text-xl uppercase tracking-wider">
                         Li e estou ciente dos riscos e recomendações
                     </button>
+                    <p id="save-status" class="text-xs mt-6 text-gray-400 uppercase font-bold hidden tracking-widest">Processando confirmação...</p>
                 </div>
             </div>
         </section>
 
         <!-- PASSO 2: DIGITAL BY YOU -->
         <section id="step-2" class="step-inactive mb-24">
-            <h2 class="text-xs font-black text-gray-400 uppercase tracking-[0.4em] mb-4 text-center">Passo 2</h2>
-            <h1 class="text-4xl font-black text-center text-gray-900 mb-12">Abrindo a solicitação no Digital By You</h1>
-
-            <!-- PAGE 1: DASHBOARD -->
-            <div class="relative">
-                <div class="dby-screen flex">
-                    <div class="dby-sidebar">
-                        <div class="font-black ifood-red text-xl mb-8">Digital You</div>
-                        <div class="space-y-4 opacity-50">
-                            <div class="flex items-center gap-2">🏠 Home</div>
-                            <div class="flex items-center gap-2">👤 Meu Perfil</div>
-                            <div class="flex items-center gap-2 text-red-600 font-bold">🛒 Compras</div>
-                            <div class="ml-4 font-bold text-black">• Nova solicitação</div>
-                        </div>
-                    </div>
-                    <div class="dby-content">
-                        <div class="flex justify-between items-center mb-10 border-b pb-4">
-                            <span class="text-sm font-semibold">Olá, Usuário iFood</span>
-                            <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">12 de Agosto de 2024</span>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="dby-card opacity-50"><p class="text-sm font-bold">Meus pedidos</p></div>
-                            <div class="dby-card border-2 border-red-500 bg-red-50 relative">
-                                <span class="click-indicator" style="top: -12px; right: 10px;">CLIQUE AQUI</span>
-                                <p class="text-sm font-bold mb-1">Novo pedido</p>
-                                <p class="text-[10px] text-gray-500">Clique aqui para fazer um novo pedido de forma rápida e sem complicações.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="text-center mb-16">
+                <h2 class="text-lg font-black text-gray-400 uppercase tracking-[0.5em] mb-4">Passo 2</h2>
+                <h1 class="text-5xl font-black text-gray-900 uppercase tracking-tighter">Abrindo a solicitação no Digital By You</h1>
             </div>
 
-            <!-- PAGE 2: SELEÇÃO TIPO -->
-            <div class="relative">
-                <div class="dby-screen p-10">
-                    <h3 class="text-lg font-bold mb-6">Solicitação de compra</h3>
-                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8 text-[11px] font-bold text-yellow-800">
-                        Atenção! Serão aceitas apenas Notas Fiscais (NFs) que foram emitidas entre o dia 1º ao dia 20 de cada mês.
+            <!-- 1ª Tela: Dashboard -->
+            <div class="dby-screen flex">
+                <div class="dby-sidebar">
+                    <div class="font-black ifood-red text-xl mb-8">Digital You</div>
+                    <div class="space-y-4 opacity-50">
+                        <div class="flex items-center gap-2">🏠 Home</div>
+                        <div class="flex items-center gap-2 text-red-600 font-bold">🛒 Compras</div>
+                        <div class="ml-4 font-bold text-black">• Nova solicitação</div>
                     </div>
-                    <div class="space-y-4 max-w-xl">
-                        <div class="dby-card opacity-40">
-                            <p class="text-xs font-bold">Solicitação de compra centralizada</p>
-                        </div>
+                </div>
+                <div class="dby-content">
+                    <div class="flex justify-between items-center mb-10 border-b pb-4 text-gray-400 font-bold text-[10px] uppercase">
+                        <span>Olá, Usuário iFood</span>
+                        <span>12 de Agosto de 2024</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="dby-card opacity-50"><p class="text-sm font-bold">Meus pedidos</p></div>
                         <div class="dby-card border-2 border-red-500 bg-red-50 relative">
-                            <span class="click-indicator" style="top: -12px; right: 10px;">CLIQUE AQUI</span>
-                            <p class="text-xs font-bold">Solicitação de compra automatizada</p>
-                            <p class="text-[10px] text-gray-400 mt-1">Quero fazer uma compra até de 500mil; Ou é uma solicitação relacionada à comissão iFood Benefícios.</p>
+                            <span class="click-indicator" style="top: -15px; right: 15px;">CLIQUE AQUI</span>
+                            <p class="text-sm font-bold mb-1">Novo pedido</p>
+                            <p class="text-[10px] text-gray-500 italic">Clique aqui para fazer um novo pedido de forma rápida.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- PAGE 3: DADOS -->
-            <div class="relative">
-                <div class="dby-screen p-10">
-                    <h4 class="text-xs font-black uppercase text-gray-400 mb-8 tracking-widest">Dados do responsável pelo pedido</h4>
-                    <div class="grid grid-cols-2 gap-6 text-[11px]">
-                        <div>
-                            <label class="block text-gray-400 mb-1 uppercase font-bold text-[9px]">Selecione uma empresa*</label>
-                            <div class="p-2 border bg-gray-50 rounded">Empresa do seu Centro de Custos</div>
-                        </div>
-                        <div class="field-highlight p-3 rounded-lg">
-                            <label class="block text-red-600 mb-1 uppercase font-bold text-[9px]">Selecione o fornecedor* <span class="example-badge">EXEMPLO</span></label>
-                            <div class="font-bold text-gray-900">33.157.312/0001-62 - IFOOD EMPRESAS</div>
-                        </div>
-                        <div>
-                            <label class="block text-gray-400 mb-1 uppercase font-bold text-[9px]">Qual é a categoria deste fornecedor?*</label>
-                            <div class="p-2 border bg-gray-50 rounded font-bold">Eventos, Ativações e Feiras</div>
-                        </div>
-                        <div>
-                            <label class="block text-gray-400 mb-1 uppercase font-bold text-[9px]">Tipo/Prazo do pagamento*</label>
-                            <div class="p-2 border bg-gray-50 rounded font-bold">TED / 28 dias da data de emissão</div>
-                        </div>
+            <!-- 2ª Tela: Tipo de Compra -->
+            <div class="dby-screen p-10">
+                <h3 class="text-xl font-bold mb-6">Solicitação de compra</h3>
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-5 mb-10 text-sm font-bold text-yellow-800 shadow-sm">
+                    Atenção! Serão aceitas apenas Notas Fiscais (NFs) que foram emitidas entre o dia 1º ao dia 20 de cada mês.
+                </div>
+                <div class="space-y-4 max-w-xl">
+                    <div class="dby-card opacity-40">
+                        <p class="text-xs font-bold">Solicitação de compra centralizada</p>
+                    </div>
+                    <div class="dby-card border-2 border-red-500 bg-red-50 relative">
+                        <span class="click-indicator" style="top: -15px; right: 15px;">CLIQUE AQUI</span>
+                        <p class="text-sm font-bold">Solicitação de compra automatizada</p>
+                        <p class="text-[11px] text-gray-400 mt-2 italic leading-relaxed">Quero fazer uma compra até de 500mil; Ou é uma solicitação relacionada à comissão iFood Benefícios.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- PAGE 4: INFORMAÇÕES -->
-            <div class="relative">
-                <div class="dby-screen p-10">
-                    <h4 class="text-xs font-black uppercase text-gray-400 mb-8 tracking-widest">Informações do pedido</h4>
-                    <div class="field-highlight p-4 rounded-xl mb-10">
-                        <label class="block text-red-600 mb-2 uppercase font-black text-[10px]">Resumo da compra, serviço ou projeto*</label>
-                        <div class="p-4 bg-white border border-red-200 rounded text-gray-400 italic">
-                            Fazer um resumo do pedido dessa compra
-                        </div>
+            <!-- 3ª Tela: Dados (Destaques) -->
+            <div class="dby-screen p-10">
+                <h4 class="text-sm font-black uppercase text-gray-400 mb-10 tracking-widest">Dados do responsável pelo pedido</h4>
+                <div class="grid grid-cols-2 gap-8 text-[12px]">
+                    <div>
+                        <label class="block text-gray-400 mb-1 uppercase font-bold text-[10px]">Selecione uma empresa*</label>
+                        <div class="p-3 border bg-gray-50 rounded">Empresa do seu Centro de Custos</div>
                     </div>
-                    <div class="p-10 border-2 border-dashed border-red-500 bg-red-50 text-center rounded-xl">
-                        <p class="text-xs font-bold text-red-600 mb-4 uppercase">Anexe a proposta técnica ou comercial*</p>
-                        <div class="inline-block px-8 py-4 bg-white border-2 border-red-200 rounded font-black text-red-600 text-xs">
-                            Anexa a campanha - somente pdf
-                        </div>
-                        <p class="text-[10px] text-gray-400 mt-2">O envio do anexo é obrigatório.</p>
+                    <div class="field-highlight p-4 rounded-lg border-2 border-red-500 shadow-sm">
+                        <label class="block text-red-600 mb-1 uppercase font-black text-[10px]">Selecione o fornecedor* <span class="example-badge">EXEMPLO</span></label>
+                        <div class="font-bold text-gray-900 text-sm">33.157.312/0001-62 - IFOOD EMPRESAS</div>
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 mb-1 uppercase font-bold text-[10px]">Qual é a categoria deste fornecedor?*</label>
+                        <div class="p-3 border bg-gray-50 rounded font-bold">Eventos, Ativações e Feiras</div>
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 mb-1 uppercase font-bold text-[10px]">Tipo/Prazo do pagamento*</label>
+                        <div class="p-3 border bg-gray-50 rounded font-bold">TED / 28 dias da data de emissão</div>
                     </div>
                 </div>
             </div>
 
-            <!-- PAGE 5 & 6: ITENS -->
-            <div class="relative">
-                <div class="dby-screen p-10">
-                    <h4 class="text-xs font-black uppercase text-gray-400 mb-8 tracking-widest">Lista de itens do pedido</h4>
-                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-100">
-                        <div class="grid grid-cols-2 gap-8 text-[11px]">
-                            <div class="field-highlight p-3 rounded-lg">
-                                <label class="block text-red-600 mb-1 uppercase font-bold text-[9px]">Selecione o centro de custo*</label>
-                                <p class="font-bold">Centro de custo da área responsável</p>
-                            </div>
-                            <div class="field-highlight p-3 rounded-lg">
-                                <label class="block text-red-600 mb-1 uppercase font-bold text-[9px]">Valor total do item*</label>
-                                <p class="font-bold text-red-600">Soma total do pedido</p>
-                            </div>
+            <!-- 4ª Tela: Informações (Destaques) -->
+            <div class="dby-screen p-10">
+                <h4 class="text-sm font-black uppercase text-gray-400 mb-10 tracking-widest">Informações do pedido</h4>
+                <div class="field-highlight p-6 rounded-xl mb-12 border-2 border-red-500 shadow-sm">
+                    <label class="block text-red-600 mb-3 uppercase font-black text-[11px]">Resumo da compra, serviço ou projeto*</label>
+                    <div class="p-5 bg-white border border-red-200 rounded text-gray-500 font-bold italic text-base">
+                        Fazer um resumo do pedido dessa compra
+                    </div>
+                </div>
+                <div class="p-12 border-2 border-dashed border-red-500 bg-red-50 text-center rounded-xl">
+                    <p class="text-sm font-bold text-red-600 mb-6 uppercase tracking-wider">Anexe a proposta técnica ou comercial*</p>
+                    <div class="inline-block px-10 py-5 bg-white border-2 border-red-200 rounded font-black text-red-600 text-sm shadow-sm">
+                        Anexa a campanha - somente pdf
+                    </div>
+                    <p class="text-[11px] text-gray-400 mt-4 italic">O envio do anexo é obrigatório.</p>
+                </div>
+            </div>
+
+            <!-- Itens Preenchidos em Destaque -->
+            <div class="dby-screen p-10">
+                <h4 class="text-sm font-black uppercase text-gray-400 mb-10 tracking-widest text-center">Itens que precisam ser preenchidos</h4>
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-inner">
+                    <div class="grid grid-cols-2 gap-10 text-[12px]">
+                        <div class="field-highlight p-5 rounded-lg border-2 border-red-500 shadow-sm">
+                            <label class="block text-red-600 mb-2 uppercase font-black text-[10px]">Selecione o centro de custo*</label>
+                            <p class="font-bold text-gray-800 text-sm">Centro de custo da área responsável</p>
                         </div>
-                        <div class="mt-8 pt-6 border-t border-gray-200">
-                            <div class="flex items-center gap-4 bg-white p-4 rounded-lg border border-red-200">
-                                <input type="checkbox" checked class="h-4 w-4">
-                                <p class="text-[11px] font-black text-red-600 uppercase">Este é um caso de urgência e não pode esperar o processo de análise de risco.</p>
-                            </div>
+                        <div class="field-highlight p-5 rounded-lg border-2 border-red-500 shadow-sm">
+                            <label class="block text-red-600 mb-2 uppercase font-black text-[10px]">Valor total do item*</label>
+                            <p class="font-bold text-red-600 text-lg">Soma total do pedido</p>
                         </div>
                     </div>
-                    <div class="flex justify-end gap-3 mt-10">
-                        <button class="px-8 py-3 bg-red-600 text-white rounded-full font-black text-[11px] uppercase tracking-[0.2em] shadow-lg">Enviar Requisição</button>
-                    </div>
+                </div>
+                <div class="flex justify-end gap-3 mt-10">
+                    <button class="px-8 py-3 bg-red-600 text-white rounded-full font-black text-[11px] uppercase tracking-[0.2em] shadow-lg">Enviar Requisição</button>
                 </div>
             </div>
         </section>
 
         <!-- PASSO 3: ALLI -->
-        <section id="step-3" class="step-inactive pb-32">
-            <h2 class="text-xs font-black text-gray-400 uppercase tracking-[0.4em] mb-4 text-center">Passo 3</h2>
-            <h1 class="text-4xl font-black text-center text-gray-900 mb-12">Chamado na Alli</h1>
+        <section id="step-3" class="step-inactive mb-24">
+            <div class="text-center mb-16">
+                <h2 class="text-lg font-black text-gray-400 uppercase tracking-[0.5em] mb-4">Passo 3</h2>
+                <h1 class="text-5xl font-black text-gray-900 uppercase tracking-tighter">Chamado na Alli</h1>
+            </div>
             
-            <div class="bg-white rounded-3xl shadow-xl border border-gray-200 p-12 max-w-4xl mx-auto">
-                <p class="text-lg text-gray-600 mb-10 leading-relaxed">
-                    Após concluir no DBY, abra um chamado na Alli na categoria <strong class="text-red-600 font-black">Benefícios - Campanhas Saldo Livre</strong> contendo:
+            <div class="bg-white rounded-3xl shadow-xl border border-gray-200 p-16 max-w-4xl mx-auto relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-2 h-full bg-red-600"></div>
+                <p class="text-xl text-gray-600 mb-12 leading-relaxed">
+                    Após concluir no DBY, abra um chamado na Alli na categoria <strong class="text-red-600 font-black uppercase text-2xl block mt-2">Benefícios - Campanhas Saldo Livre</strong> contendo:
                 </p>
                 
-                <div class="grid gap-6 text-sm">
-                    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex items-center gap-6">
-                        <div class="text-3xl">📂</div>
+                <div class="grid gap-10 text-base">
+                    <div class="bg-gray-50 p-10 rounded-2xl border border-gray-100 flex items-center gap-10 shadow-sm">
+                        <div class="text-5xl">📂</div>
                         <div>
-                            <p class="font-black text-gray-900 mb-2">Listagem das pessoas e valores</p>
-                            <a href="https://docs.google.com/spreadsheets/d/1zP5CGHPNuP1DT7Jzng0Y--ifcTLECK2tFXVM_VW5UBg/edit?gid=0#gid=0" target="_blank" class="text-blue-600 font-bold underline">Planilha oficial para download</a>
-                            <p class="text-[10px] text-gray-400 mt-2 italic font-medium">Preencha e anexe o arquivo no ticket Alli.</p>
-                        </div>
-                    </div>
-                    <div class="grid md:grid-cols-3 gap-4">
-                        <div class="p-6 bg-white border rounded-2xl text-center">
-                            <p class="font-black text-gray-900 mb-2">Pedido DBY</p>
-                            <p class="text-[10px] text-gray-400">Número gerado no sistema</p>
-                        </div>
-                        <div class="p-6 bg-white border rounded-2xl text-center">
-                            <p class="font-black text-gray-900 mb-2">Pessoa de Contato</p>
-                            <p class="text-[10px] text-gray-400">Para dúvidas operacionais</p>
-                        </div>
-                        <div class="p-6 bg-white border rounded-2xl text-center">
-                            <p class="font-black text-gray-900 mb-2">Documento</p>
-                            <p class="text-[10px] text-gray-400">Contrato ou Regulamento</p>
+                            <p class="text-xl font-black text-gray-900 mb-3">Listagem das pessoas e valores</p>
+                            <a href="https://docs.google.com/spreadsheets/d/1zP5CGHPNuP1DT7Jzng0Y--ifcTLECK2tFXVM_VW5UBg/edit?gid=0#gid=0" target="_blank" class="text-blue-600 font-bold underline italic text-lg hover:text-blue-800 transition-colors">Planilha oficial para download</a>
+                            <p class="text-xs text-gray-400 mt-3 font-medium uppercase tracking-wider">Faça o download, preencha e anexe o arquivo no ticket Alli.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- AUDITORIA -->
-        <section id="audit-panel" class="hidden mt-20 border-t pt-10">
-            <h2 class="text-xs font-black text-gray-400 uppercase mb-6 tracking-widest px-4">Histórico de Ciência</h2>
+        <!-- PASSO 4: PAGAMENTO -->
+        <section id="step-4" class="step-inactive pb-32">
+            <div class="text-center mb-16">
+                <h2 class="text-lg font-black text-gray-400 uppercase tracking-[0.5em] mb-4">Passo 4</h2>
+                <h1 class="text-5xl font-black text-gray-900 uppercase tracking-tighter">Regras de Pagamento</h1>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-10 rounded-3xl shadow-lg border border-gray-100 flex flex-col justify-center">
+                    <div class="text-4xl mb-4">📅</div>
+                    <h3 class="text-xl font-black text-gray-800 mb-4 uppercase tracking-tight">Prazo Padrão</h3>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        O pagamento será realizado em até <strong class="text-red-600 font-black">7 dias úteis</strong> após o retorno via ticket da Alli.
+                    </p>
+                </div>
+
+                <div class="bg-red-600 p-10 rounded-3xl shadow-xl text-white">
+                    <div class="text-4xl mb-4">⚠️</div>
+                    <h3 class="text-xl font-black mb-4 uppercase tracking-tight">Corte Mensal</h3>
+                    <p class="text-red-50 leading-relaxed text-lg">
+                        Solicitações feitas <strong class="text-white font-black">após o dia 18</strong> de cada mês, serão pagas somente no <strong class="text-white font-black underline">início do mês subsequente</strong>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- AUDITORIA (OCULTO) -->
+        <section id="audit-panel" class="hidden mt-20 border-t pt-10 px-4">
+            <h2 class="text-xs font-black text-gray-400 uppercase mb-6 tracking-widest">Painel Administrativo</h2>
             <div class="bg-white rounded-lg shadow border overflow-hidden">
                 <table class="min-w-full divide-y divide-gray-100 text-[11px]">
-                    <thead class="bg-gray-50 text-gray-400">
-                        <tr><th class="px-6 py-3 text-left uppercase">UID</th><th class="px-6 py-3 text-left uppercase">Data</th><th class="px-6 py-3 text-left uppercase">Status</th></tr>
+                    <thead class="bg-gray-50 text-gray-400 font-bold">
+                        <tr><th class="px-6 py-3 text-left uppercase">Usuário</th><th class="px-6 py-3 text-left uppercase">Data de Aceite</th><th class="px-6 py-3 text-left uppercase">Status</th></tr>
                     </thead>
                     <tbody id="audit-logs-body" class="bg-white divide-y divide-gray-100 text-gray-600">
-                        <tr><td colspan="3" class="p-6 text-center italic">A carregar logs...</td></tr>
+                        <tr><td colspan="3" class="p-6 text-center italic text-gray-300">Sem registos disponíveis.</td></tr>
                     </tbody>
                 </table>
             </div>
         </section>
     </main>
 
+    <footer class="py-20 text-center border-t border-gray-100 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-3xl font-black ifood-red mb-4 uppercase tracking-tighter">iFood</div>
+            <p class="text-xs text-gray-300 uppercase tracking-[0.5em] font-black">Instruções para Pagamento de Campanhas</p>
+        </div>
+    </footer>
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        const firebaseConfig = JSON.parse(__firebase_config);
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'campanha-procurement-saldo-livre';
+        // ==========================================
+        // CONFIGURAÇÕES DE ADMINISTRADOR
+        // ==========================================
+        const adminUIDs = []; 
+        const secretPass = "ifoodadmin2024"; 
+        // ==========================================
 
+        const hasConfig = typeof __firebase_config !== 'undefined';
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'campanha-procurement-saldo-livre';
+        
+        let db = null;
+        let auth = null;
         let currentUser = null;
 
-        const initAuth = async () => {
-            try {
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
-                }
-            } catch (e) {}
-        };
+        function checkAdmin(uid) {
+            if (adminUIDs.includes(uid)) {
+                document.getElementById('audit-btn').classList.remove('hidden');
+            }
+        }
 
-        onAuthStateChanged(auth, (user) => {
-            currentUser = user;
-            if (user) listenToLogs();
+        let clickCount = 0;
+        document.getElementById('logo-ifood').addEventListener('click', () => {
+            clickCount++;
+            if (clickCount >= 5) {
+                clickCount = 0;
+                const p = prompt("Digite a senha de administrador:");
+                if (p === secretPass) {
+                    document.getElementById('audit-btn').classList.remove('hidden');
+                    alert("Modo administrador ativado!");
+                }
+            }
+            setTimeout(() => { clickCount = 0; }, 3000);
         });
 
-        initAuth();
+        function unlockUI() {
+            // Desbloqueia passos 2, 3 e 4
+            ['step-2', 'step-3', 'step-4'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.classList.add('step-active');
+                    el.classList.remove('step-inactive');
+                }
+            });
+
+            const btn = document.getElementById('unlock-btn');
+            btn.innerText = '✓ Ciência Confirmada';
+            btn.classList.replace('bg-ifood-red', 'bg-green-600');
+            btn.classList.remove('loading');
+            btn.disabled = true;
+            
+            window.scrollTo({ top: document.getElementById('step-2').offsetTop - 50, behavior: 'smooth' });
+        }
+
+        if (hasConfig) {
+            const firebaseConfig = JSON.parse(__firebase_config);
+            const app = initializeApp(firebaseConfig);
+            auth = getAuth(app);
+            db = getFirestore(app);
+
+            const initAuth = async () => {
+                try {
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                } catch (e) { console.warn("Auth failed."); }
+            };
+
+            onAuthStateChanged(auth, (user) => {
+                currentUser = user;
+                if (user) {
+                    checkAdmin(user.uid);
+                    listenToLogs();
+                }
+            });
+
+            initAuth();
+        }
 
         window.handleAcknowledge = async () => {
-            if (!currentUser) return;
             const btn = document.getElementById('unlock-btn');
+            const status = document.getElementById('save-status');
             btn.classList.add('loading');
+            status.classList.remove('hidden');
 
-            try {
-                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'acknowledgments'), {
-                    userId: currentUser.uid,
-                    acknowledgedAt: serverTimestamp(),
-                    status: "Confirmado"
-                });
-
-                document.getElementById('step-2').classList.add('step-active');
-                document.getElementById('step-2').classList.remove('step-inactive');
-                document.getElementById('step-3').classList.add('step-active');
-                document.getElementById('step-3').classList.remove('step-inactive');
-
-                btn.innerText = '✓ Ciência Confirmada';
-                btn.classList.replace('bg-ifood-red', 'bg-green-600');
-                btn.classList.remove('loading');
-                btn.disabled = true;
-                
-                window.scrollTo({ top: document.getElementById('step-2').offsetTop - 50, behavior: 'smooth' });
-            } catch (e) {
-                btn.classList.remove('loading');
-                alert("Erro ao registar ciência.");
+            if (hasConfig && db && currentUser) {
+                try {
+                    await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'acknowledgments'), {
+                        userId: currentUser.uid,
+                        acknowledgedAt: serverTimestamp(),
+                        status: "Confirmado"
+                    });
+                } catch (e) { console.error("DB error."); }
             }
+
+            setTimeout(() => {
+                unlockUI();
+                status.innerText = "Ciência registada com sucesso.";
+            }, 800);
         };
 
         function listenToLogs() {
+            if (!hasConfig || !db) return;
             onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'acknowledgments'), (snap) => {
                 const logsBody = document.getElementById('audit-logs-body');
-                if (snap.empty) { logsBody.innerHTML = '<tr><td colspan="3" class="p-6 text-center text-gray-300">Sem registos.</td></tr>'; return; }
+                if (snap.empty) return;
                 const docs = snap.docs.map(d => d.data()).sort((a,b) => (b.acknowledgedAt?.seconds || 0) - (a.acknowledgedAt?.seconds || 0));
                 logsBody.innerHTML = docs.map(log => `
-                    <tr><td class="px-6 py-4 font-mono text-gray-400">${log.userId}</td><td class="px-6 py-4">${log.acknowledgedAt ? new Date(log.acknowledgedAt.seconds * 1000).toLocaleString('pt-PT') : '...'}</td><td class="px-6 py-4 font-bold text-green-600 tracking-tighter uppercase text-[9px]">${log.status}</td></tr>
+                    <tr>
+                        <td class="px-6 py-4 font-mono text-gray-400">${log.userId.substring(0,10)}...</td>
+                        <td class="px-6 py-4">${log.acknowledgedAt ? new Date(log.acknowledgedAt.seconds * 1000).toLocaleString('pt-PT') : '...'}</td>
+                        <td class="px-6 py-4 font-bold text-green-600 uppercase text-[9px]">Confirmado</td>
+                    </tr>
                 `).join('');
             });
         }
 
         window.toggleAuditPanel = () => {
             document.getElementById('audit-panel').classList.toggle('hidden');
+            if(!document.getElementById('audit-panel').classList.contains('hidden')) {
+                document.getElementById('audit-panel').scrollIntoView({behavior: 'smooth'});
+            }
         };
     </script>
 </body>
